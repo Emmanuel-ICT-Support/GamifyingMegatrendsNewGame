@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Join game – Megatrends</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .join-page {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+        text-align: center;
+      }
+      .join-card {
+        max-width: 420px;
+        width: 100%;
+        background: rgba(17, 24, 39, 0.95);
+        border: 1px solid rgba(129, 140, 248, 0.5);
+        border-radius: 1.25rem;
+        padding: 2rem;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      }
+      .join-page h1 {
+        margin: 0 0 0.5rem;
+        font-size: 1.6rem;
+        color: #f9fafb;
+      }
+      .join-page p {
+        margin: 0 0 1.5rem;
+        color: #9ca3af;
+        font-size: 1rem;
+      }
+      .join-page label {
+        display: block;
+        text-align: left;
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+        color: #d1d5db;
+      }
+      .join-page input {
+        width: 100%;
+        padding: 0.85rem 1rem;
+        font-size: 1rem;
+        border-radius: 0.5rem;
+        border: 1px solid #374151;
+        background: #0f172a;
+        color: #f9fafb;
+        margin-bottom: 1.25rem;
+      }
+      .join-page input::placeholder {
+        color: #6b7280;
+      }
+      .join-page input:focus {
+        outline: none;
+        border-color: #6366f1;
+        box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.3);
+      }
+      .join-page .btn-start {
+        width: 100%;
+        padding: 1rem 1.5rem;
+        font-size: 1.15rem;
+        font-weight: 600;
+        color: #fff;
+        background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
+        border: none;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        transition: transform 0.1s, box-shadow 0.1s;
+      }
+      .join-page .btn-start:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+      }
+      .join-page .btn-start:active {
+        transform: translateY(0);
+      }
+      .join-page .hint {
+        margin-top: 1.25rem;
+        font-size: 0.85rem;
+        color: #6b7280;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="join-page">
+      <div class="join-card">
+        <h1>Megatrends & Future Work</h1>
+        <p>Enter the session code from your teacher to join the game.</p>
+        <form id="join-form">
+          <label for="session-code">Session code</label>
+          <input
+            type="text"
+            id="session-code"
+            name="session"
+            placeholder="Paste or type the code here"
+            autocomplete="off"
+          />
+          <button type="submit" class="btn-start" id="btn-start">Start game</button>
+        </form>
+        <p class="hint">Don’t have a code? Ask your teacher for the join link and session code.</p>
+      </div>
+    </div>
+    <script>
+      (function () {
+        var form = document.getElementById("join-form");
+        var input = document.getElementById("session-code");
+
+        // If URL already has ?session=..., pre-fill and allow re-submit or just go
+        var params = new URLSearchParams(window.location.search);
+        var sessionFromUrl = params.get("session") || params.get("session_id");
+        if (sessionFromUrl) {
+          input.value = sessionFromUrl;
+        }
+
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          var code = (input.value || "").trim();
+          if (!code) {
+            input.focus();
+            return;
+          }
+          window.location.href = "index.html?session=" + encodeURIComponent(code);
+        });
+      })();
+    </script>
+  </body>
+</html>

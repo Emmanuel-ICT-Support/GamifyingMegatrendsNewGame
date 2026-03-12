@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Megatrends Game – Intro & Impactful Technology</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="tap-overlay" class="tap-overlay">
+      <div class="tap-overlay__card">
+        <p class="tap-overlay__title">Megatrends & Future Work</p>
+        <p class="tap-overlay__hint">Tap or click to begin with sound</p>
+        <button type="button" id="tap-start" class="nav-button">Begin</button>
+      </div>
+    </div>
+    <div id="app">
+      <header class="app-header">
+        <h1>Megatrends & Future Work</h1>
+        <p class="app-subtitle">Intro & Impactful Technology Scenario</p>
+      </header>
+
+      <main class="scene-container">
+        <div class="scene-header">
+          <h2 id="scene-label"></h2>
+          <p id="scene-phase" class="scene-phase"></p>
+        </div>
+
+        <div id="media-placeholder" class="media-placeholder">
+          <p class="media-caption">
+            Media placeholder — add your video, image, or animation for this
+            scene.
+          </p>
+        </div>
+
+        <section id="narration" class="narration"></section>
+
+        <section id="choices" class="choices"></section>
+      </main>
+
+      <footer class="app-footer">
+        <button id="prev-button" class="nav-button" disabled>Back</button>
+        <button id="next-button" class="nav-button">Next</button>
+      </footer>
+    </div>
+
+    <script src="config/supabase-config.js"></script>
+    <script src="main.js"></script>
+  </body>
+  </html>
+

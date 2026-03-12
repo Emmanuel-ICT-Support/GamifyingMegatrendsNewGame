@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Teacher – Megatrends Class Sessions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .teacher-page { max-width: 720px; margin: 0 auto; padding: 1.5rem; }
+      .teacher-page h1 { margin: 0 0 0.5rem; font-size: 1.5rem; }
+      .teacher-page h2 { margin: 1.5rem 0 0.5rem; font-size: 1.15rem; color: #a5b4fc; }
+      .teacher-page p { margin: 0.25rem 0; color: #d1d5db; }
+      .teacher-page .card { background: #111827; border-radius: 1rem; padding: 1.25rem; margin: 1rem 0; border: 1px solid #1e293b; }
+      .teacher-page button { background: #4338ca; color: #fff; border: none; padding: 0.6rem 1.2rem; border-radius: 0.5rem; font-size: 1rem; cursor: pointer; }
+      .teacher-page button:hover { background: #5b21b6; }
+      .teacher-page button.secondary { background: #374151; }
+      .teacher-page button.secondary:hover { background: #4b5563; }
+      .teacher-page input, .teacher-page select { padding: 0.5rem; border-radius: 0.375rem; border: 1px solid #374151; background: #0f172a; color: #f9fafb; min-width: 200px; }
+      .teacher-page label { display: block; margin-bottom: 0.25rem; font-size: 0.9rem; color: #9ca3af; }
+      .teacher-page .link-box { background: #0f172a; padding: 0.75rem; border-radius: 0.5rem; margin: 0.5rem 0; word-break: break-all; font-size: 0.9rem; }
+      .teacher-page .link-box a { color: #93c5fd; }
+      .teacher-page .category-block { margin: 0.75rem 0; padding: 0.75rem; background: #0f172a; border-radius: 0.5rem; border-left: 4px solid #4338ca; }
+      .teacher-page .category-block h3 { margin: 0 0 0.35rem; font-size: 1rem; }
+      .teacher-page .category-block .names { font-size: 0.9rem; color: #9ca3af; }
+      .teacher-page .strength-box { background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%); padding: 1rem; border-radius: 0.75rem; margin: 1rem 0; }
+      .teacher-page .strength-box h3 { margin: 0 0 0.5rem; font-size: 1rem; }
+      .teacher-page .error { color: #f87171; font-size: 0.9rem; }
+      .teacher-page .muted { color: #6b7280; font-size: 0.85rem; }
+      .teacher-page .teacher-copy { margin-left: 0.35rem; padding: 0.35rem 0.6rem; font-size: 0.85rem; }
+      .teacher-page .link-box code { word-break: break-all; font-size: 0.85rem; }
+    </style>
+  </head>
+  <body>
+    <div class="teacher-page">
+      <h1>Megatrends – Teacher</h1>
+      <p class="muted">Pool student answers by session. Reset when you start a new class run.</p>
+
+      <div class="card">
+        <h2>Start new session</h2>
+        <p>Creates a new pool. Share the game link with students; when you're ready to review, open "View results" for this session.</p>
+        <button id="btn-new-session">New session</button>
+        <div id="new-session-result" class="link-box" style="display: none;"></div>
+      </div>
+
+      <div class="card">
+        <h2>View results by session</h2>
+        <label for="session-select">Session</label>
+        <select id="session-select">
+          <option value="">— Load sessions —</option>
+        </select>
+        <button id="btn-load-sessions" class="secondary">Load sessions</button>
+        <div id="results-area" style="display: none;">
+          <h3 style="margin-top: 1rem;">Choices by category</h3>
+          <div id="results-by-category"></div>
+          <h3 style="margin-top: 1rem;">Workshop strength (this class)</h3>
+          <div id="results-strength" class="strength-box"></div>
+          <h3 style="margin-top: 1rem;">EST Practice – class total & group reward</h3>
+          <div id="results-est" class="strength-box"></div>
+        </div>
+        <p id="results-error" class="error" style="display: none;"></p>
+      </div>
+    </div>
+
+    <script src="config/supabase-config.js"></script>
+    <script src="teacher.js"></script>
+  </body>
+</html>
